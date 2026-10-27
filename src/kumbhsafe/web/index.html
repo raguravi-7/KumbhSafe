@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KumbhSafe Control Room</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>KumbhSafe <span>Control Room</span></h1>
+  <div class="kpis">
+    <div class="kpi"><b id="k-people">-</b><small>People in zones</small></div>
+    <div class="kpi"><b id="k-crit">-</b><small>High / Critical zones</small></div>
+    <div class="kpi"><b id="k-inc">-</b><small>Open incidents</small></div>
+  </div>
+</header>
+<main>
+  <section class="card wide">
+    <h2>Live zone map <small>(schematic, sample coordinates)</small></h2>
+    <svg id="map" viewBox="0 0 640 360" role="img" aria-label="Zone map"></svg>
+    <div class="legend">
+      <i style="background:#2e9e5b"></i>Safe <i style="background:#d9a400"></i>Moderate
+      <i style="background:#e8782a"></i>High <i style="background:#d12f2f"></i>Critical
+      &nbsp;|&nbsp; &#9679; hospital &nbsp; + first aid &nbsp; &#9650; police &nbsp; &#9670; fire
+    </div>
+  </section>
+  <section class="card">
+    <h2>Alerts</h2>
+    <ul id="alerts" class="list"></ul>
+    <div class="row">
+      <select id="surge-zone"></select>
+      <button id="surge-btn" class="ghost">Simulate surge</button>
+    </div>
+  </section>
+  <section class="card wide">
+    <h2>Zones</h2>
+    <table><thead><tr><th>Zone</th><th>People</th><th>Density /m&sup2;</th><th>Growth</th><th>Level</th></tr></thead>
+    <tbody id="zones"></tbody></table>
+  </section>
+  <section class="card">
+    <h2>Health triage</h2>
+    <form id="triage-form">
+      <label>Zone <select name="zone" class="zone-sel"></select></label>
+      <label>Age <input name="age" type="number" min="0" max="120" required value="30"></label>
+      <fieldset id="symptoms"><legend>Symptoms</legend></fieldset>
+      <label class="inline"><input type="checkbox" name="pregnant"> Pregnant</label>
+      <label class="inline"><input type="checkbox" name="chronic"> Chronic condition</label>
+      <button>Assess patient</button>
+    </form>
+    <div id="triage-out" class="out" hidden></div>
+  </section>
+  <section class="card">
+    <h2>SOS report</h2>
+    <form id="sos-form">
+      <label>Zone <select name="zone" class="zone-sel"></select></label>
+      <label>Type <select name="type" id="sos-type"></select></label>
+      <label>Note <input name="note" maxlength="200" placeholder="Optional details"></label>
+      <button>Send SOS</button>
+    </form>
+    <div id="sos-out" class="out" hidden></div>
+  </section>
+  <section class="card wide">
+    <h2>Incident log</h2>
+    <ul id="incidents" class="list"></ul>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

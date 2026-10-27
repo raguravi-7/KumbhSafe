@@ -1,0 +1,7 @@
+id,age,symptoms,pregnant,chronic
+P01,34,minor_cut;headache,0,0
+P02,67,dehydration;dizziness,0,1
+P03,28,chest_pain;difficulty_breathing,0,0
+P04,45,unconscious,0,0
+P05,8,high_fever;vomiting,0,0
+P06,30,heat_stroke;dehydration,1,0
